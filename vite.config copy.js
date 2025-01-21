@@ -20,7 +20,6 @@ export default defineConfig({
         product: "product.html",
         note: "note.html",
         button: "button.html",
-        home: "home.html",
       },
     },
   },

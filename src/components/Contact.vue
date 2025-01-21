@@ -1,5 +1,7 @@
 <script setup>
-import { reactive, toRefs } from "vue";
+import { reactive } from "vue";
+import ContactForm from "./ContactForm.vue";
+import ContactList from "./ContactList.vue";
 
 const contact = reactive({
   email: "",
@@ -10,59 +12,20 @@ const contact = reactive({
   message: "",
 });
 </script>
+
 <template>
   <div>
-    <form action="">
-      <div>
-        <label for="email">
-          Email:
-          <input type="email" v-model="contact.email" />
-        </label>
-        <label for="username">
-          Username:
-          <input type="text" id="username" v-model="contact.username" />
-        </label>
-        <label for="age">
-          Age:
-          <input id="age" type="number" v-model.number="contact.age" />
-        </label>
-        <label for="type"
-          >Type:
-          <select name="type" id="type" v-model="contact.type">
-            <option value="regular">regular</option>
-            <option value="VIP">VIP</option>
-            <option value="refugees">refugees</option>
-          </select>
-        </label>
-        <label for="complain">
-          Complain:
-          <input
-            type="checkbox"
-            name="complain"
-            id="complain"
-            v-model="contact.complain"
-          />
-        </label>
-        <label for="message"
-          >Message
-          <textarea
-            name="message"
-            id="message"
-            v-model="contact.message"
-          ></textarea>
-        </label>
-      </div>
-    </form>
+    <ContactForm v-model="contact" />
 
-    <div>
-      <h1>Preview</h1>
-      <p>Username {{ contact.email }}</p>
-      <p>Username {{ contact.username }}</p>
-      <p>Username {{ contact.age }}</p>
-      <p>Username {{ contact.type }}</p>
-      <p>Username {{ contact.complain }}</p>
-      <p>Username {{ contact.message }}</p>
-    </div>
+    <ContactList
+      v-model:username.uppercase="contact.username"
+      ,
+      v-model:email="contact.email"
+      v-model:age="contact.age"
+      v-model:type="contact.type"
+      v-model:complain="contact.compain"
+      v-model:message="contact.messagge"
+    />
   </div>
 </template>
 
